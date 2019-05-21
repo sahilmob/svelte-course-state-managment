@@ -1,9 +1,10 @@
 <script>
+  import { onDestroy } from "svelte";
   import CartItem from "./CartItem.svelte";
   import cartItems from "./cart-store";
 
   let items;
-  cartItems.subscribe(itms => {
+  const unsbscribe = cartItems.subscribe(itms => {
     items = itms;
   });
   // export let items = [
@@ -18,6 +19,9 @@
   //     price: 9.99
   //   }
   // ];
+  onDestroy(() => {
+    if (unsbscribe) unsbscribe();
+  });
 </script>
 
 <style>
