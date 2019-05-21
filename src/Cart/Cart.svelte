@@ -3,25 +3,25 @@
   import CartItem from "./CartItem.svelte";
   import cartItems from "./cart-store";
 
-  let items;
-  const unsbscribe = cartItems.subscribe(itms => {
-    items = itms;
-  });
-  // export let items = [
-  //   {
-  //     id: "p1",
-  //     title: "Test",
-  //     price: 9.99
-  //   },
-  //   {
-  //     id: "p2",
-  //     title: "Test",
-  //     price: 9.99
-  //   }
-  // ];
-  onDestroy(() => {
-    if (unsbscribe) unsbscribe();
-  });
+  // let items;
+  // const unsbscribe = cartItems.subscribe(itms => {
+  //   items = itms;
+  // });
+  // // export let items = [
+  // //   {
+  // //     id: "p1",
+  // //     title: "Test",
+  // //     price: 9.99
+  // //   },
+  // //   {
+  // //     id: "p2",
+  // //     title: "Test",
+  // //     price: 9.99
+  // //   }
+  // // ];
+  // onDestroy(() => {
+  //   if (unsbscribe) unsbscribe();
+  // });
 </script>
 
 <style>
@@ -42,7 +42,7 @@
 <section>
   <h1>Cart</h1>
   <ul>
-    {#each items as item (item.id)}
+    {#each $cartItems as item (item.id)}
       <CartItem id={item.id} title={item.title} price={item.price} />
     {:else}
       <p>No items in cart yet!</p>
