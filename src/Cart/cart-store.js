@@ -12,5 +12,18 @@ const cart = writable([
 		price: 9.99
 	}
 ]);
+const createCart = {
+	subscribe: cart.subscribe,
+	addItem: item => {
+		cart.update(items => {
+			return [...items, item];
+		});
+	},
+	removeItem: id => {
+		cart.update(items => {
+			return items.filter(i => i.id !== id);
+		});
+	}
+};
 
-export default cart;
+export default createCart;

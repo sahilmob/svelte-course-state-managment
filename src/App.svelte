@@ -7,13 +7,13 @@
 
   let showCart = true;
 
-  const unsubscribe = timer.subscribe(count => {
-    console.log("App: " + count);
-  });
+  // const unsubscribe = timer.subscribe(count => {
+  //   console.log("App: " + count);
+  // });
 
-  onDestroy(() => {
-    unsubscribe();
-  });
+  // onDestroy(() => {
+  //   unsubscribe();
+  // });
 </script>
 
 <Button on:click={() => (showCart = !showCart)}>Toogle Cart</Button>
