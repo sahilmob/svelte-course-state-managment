@@ -1,5 +1,6 @@
 <script>
   import Button from "../UI/Button.svelte";
+  import cartItems from "./cart-store.js";
 
   export let title;
   export let price;
@@ -12,8 +13,9 @@
   }
 
   function removeFromCart() {
-    // ...
-    console.log("Removing...");
+    cartItems.update(items => {
+      return items.filter(i => i.id !== id);
+    });
   }
 </script>
 
@@ -42,7 +44,7 @@
   <h1>{title}</h1>
   <h2>{price}</h2>
   <Button mode="outline" on:click={displayDescription}>
-    {showDescription ? 'Hide Description' : 'Show Description'}
+     {showDescription ? 'Hide Description' : 'Show Description'}
   </Button>
   <Button on:click={removeFromCart}>Remove from Cart</Button>
   {#if showDescription}
